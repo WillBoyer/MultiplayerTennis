@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://fxvwns0du8na"]
+
+[ext_resource type="Texture2D" uid="uid://beeejq87wswv6" path="res://assets/ball_blue_small.png" id="1_7s4qf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxlvu"]
+radius = 16.0
+
+[node name="Ball" type="RigidBody2D" unique_id=637803379]
+gravity_scale = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1228677590]
+texture = ExtResource("1_7s4qf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1190826278]
+shape = SubResource("CircleShape2D_cxlvu")
