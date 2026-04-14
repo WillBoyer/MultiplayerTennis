@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beeejq87wswv6"
-path="res://.godot/imported/ball_blue_small.png-c0dd74a5fe869f89a46eef6c2ac1df9c.ctex"
+uid="uid://b5uso4rmjc8c8"
+path="res://.godot/imported/ball_blue_small.png-df058be81e8af2cc9b16816d4b57c94a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ball_blue_small.png"
-dest_files=["res://.godot/imported/ball_blue_small.png-c0dd74a5fe869f89a46eef6c2ac1df9c.ctex"]
+source_file="res://Assets/ball_blue_small.png"
+dest_files=["res://.godot/imported/ball_blue_small.png-df058be81e8af2cc9b16816d4b57c94a.ctex"]
 
 [params]
 

@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://h0hxo7q8qtxk"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hb4r"]
-size = Vector2(20, 720)
-
-[node name="Goal" type="Area2D" unique_id=1446802181]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2054463990]
-shape = SubResource("RectangleShape2D_8hb4r")

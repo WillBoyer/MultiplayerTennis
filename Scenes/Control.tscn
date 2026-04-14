@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://biu5n5ns8lcrb"]
+
+[node name="Control" type="CanvasLayer" unique_id=19478421]
+
+[node name="Player1Score" type="Label" parent="." unique_id=1391234316]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Player2Score" type="Label" parent="." unique_id=2064516321]
+offset_right = 40.0
+offset_bottom = 23.0
