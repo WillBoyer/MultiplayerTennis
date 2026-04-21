@@ -1,4 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
+.vscode/
 /android/
-Multiplayer Tennis.x86_64
+**/Multiplayer Tennis.x86_64
+**/data_Multiplayer Lan Tutorial CSharp_linuxbsd_x86_64/
