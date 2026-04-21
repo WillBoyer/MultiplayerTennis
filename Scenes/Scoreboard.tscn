@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://biu5n5ns8lcrb"]
+
+[ext_resource type="FontFile" uid="uid://c7tdv7x6kmgsf" path="res://Assets/cursed-timer-ulil-font/CursedTimerUlil-Aznm.ttf" id="1_k7axu"]
+[ext_resource type="Script" uid="uid://bgqghx3ngy5mx" path="res://Scripts/Scoreboard.cs" id="1_l5htm"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_u0k5u"]
+properties/0/path = NodePath(".:text")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_m4m53"]
+properties/0/path = NodePath(".:text")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Scoreboard" type="CanvasLayer" unique_id=19478421]
+script = ExtResource("1_l5htm")
+
+[node name="Player1Score" type="Label" parent="." unique_id=1391234316]
+offset_left = 400.0
+offset_right = 440.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_k7axu")
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Player1Score" unique_id=745792280]
+replication_config = SubResource("SceneReplicationConfig_u0k5u")
+
+[node name="Player2Score" type="Label" parent="." unique_id=2064516321]
+offset_left = 624.0
+offset_right = 664.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_k7axu")
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Player2Score" unique_id=378641421]
+replication_config = SubResource("SceneReplicationConfig_m4m53")

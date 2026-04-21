@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://fxvwns0du8na"]
+
+[ext_resource type="Script" uid="uid://b45a6rcqbfwv4" path="res://Scripts/Ball.cs" id="1_eb1ap"]
+[ext_resource type="Texture2D" uid="uid://b5uso4rmjc8c8" path="res://Assets/ball_blue_small.png" id="2_27lt3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sb48q"]
+radius = 16.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_kldst"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Ball" type="CharacterBody2D" unique_id=1685743867]
+script = ExtResource("1_eb1ap")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=279456630]
+shape = SubResource("CircleShape2D_sb48q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=372348663]
+texture = ExtResource("2_27lt3")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1395793740]
+replication_config = SubResource("SceneReplicationConfig_kldst")

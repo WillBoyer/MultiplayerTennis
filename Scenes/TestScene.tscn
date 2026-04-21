@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cqmcx0hg4y21v"]
+
+[ext_resource type="Script" uid="uid://cb358kaikseg4" path="res://Scripts/SceneManager.cs" id="1_p5a22"]
+[ext_resource type="PackedScene" uid="uid://hpbx14ma8p0v" path="res://Scenes/player.tscn" id="2_yb0ig"]
+[ext_resource type="PackedScene" uid="uid://d3qtgtb3k08ed" path="res://Scenes/Wall.tscn" id="3_wicfy"]
+[ext_resource type="PackedScene" uid="uid://biu5n5ns8lcrb" path="res://Scenes/Scoreboard.tscn" id="4_go42g"]
+[ext_resource type="PackedScene" path="res://Scenes/Ball.tscn" id="5_sreuk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sreuk"]
+size = Vector2(20, 512)
+
+[node name="Node2D" type="Node2D" unique_id=117924047]
+script = ExtResource("1_p5a22")
+playerScene = ExtResource("2_yb0ig")
+
+[node name="PlayerSpawnPoints" type="Node2D" parent="." unique_id=1985727991]
+
+[node name="0" type="Node2D" parent="PlayerSpawnPoints" unique_id=1385430130 groups=["PlayerSpawnPoints"]]
+position = Vector2(80, 256)
+
+[node name="1" type="Node2D" parent="PlayerSpawnPoints" unique_id=537546386 groups=["PlayerSpawnPoints"]]
+position = Vector2(944, 256)
+
+[node name="UpperWall" parent="." unique_id=1147444979 instance=ExtResource("3_wicfy")]
+
+[node name="LowerWall" parent="." unique_id=487966322 instance=ExtResource("3_wicfy")]
+position = Vector2(0, 532)
+
+[node name="Scoreboard" parent="." unique_id=19478421 instance=ExtResource("4_go42g")]
+
+[node name="Player1Goal" type="Area2D" parent="." unique_id=1117105064]
+position = Vector2(-10, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Goal" unique_id=42925778]
+shape = SubResource("RectangleShape2D_sreuk")
+
+[node name="Player2Goal" type="Area2D" parent="." unique_id=1030040873]
+position = Vector2(1034, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Goal" unique_id=821246510]
+shape = SubResource("RectangleShape2D_sreuk")
+
+[node name="Ball" parent="." unique_id=1685743867 instance=ExtResource("5_sreuk")]
+position = Vector2(512, 256)
+
+[connection signal="body_entered" from="Player1Goal" to="Scoreboard" method="OnPlayer1GoalBodyEntered"]
+[connection signal="body_entered" from="Player1Goal" to="Ball" method="OnPlayer1GoalBodyEntered"]
+[connection signal="body_entered" from="Player2Goal" to="Scoreboard" method="OnPlayer2GoalBodyEntered"]
+[connection signal="body_entered" from="Player2Goal" to="Ball" method="OnPlayer2GoalBodyEntered"]

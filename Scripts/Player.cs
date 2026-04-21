@@ -1,20 +1,16 @@
 using Godot;
 using System;
-using System.Numerics;
 
 public partial class Player : CharacterBody2D
 {
+	private Vector2 syncPos = new Vector2(0,0);
 
-    private Godot.Vector2 syncPos = new Godot.Vector2(0,0);
-
-    public override void _Ready()
-    {
-        GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId())
+	public override void _Ready(){
+		GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").SetMultiplayerAuthority(int.Parse(Name));
+	}
+	public override void _PhysicsProcess(double delta)
+	{
+		if (GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer").GetMultiplayerAuthority() == Multiplayer.GetUniqueId())
         {
             if (Input.IsActionPressed("MoveUp"))
             {
@@ -34,6 +30,5 @@ public partial class Player : CharacterBody2D
         {
             GlobalPosition = GlobalPosition.Lerp(syncPos, .5f);
         }
-
-    }
+	}
 }

@@ -1,20 +1,10 @@
 [gd_scene format=3 uid="uid://dod4w8rpsgo5c"]
 
-[ext_resource type="Script" uid="uid://b71i48gd3xqug" path="res://Scripts/SceneManager.cs" id="1_sb48q"]
-[ext_resource type="Script" uid="uid://b45a6rcqbfwv4" path="res://Scripts/Ball.cs" id="3_sb48q"]
-[ext_resource type="Texture2D" uid="uid://b5uso4rmjc8c8" path="res://Assets/ball_blue_small.png" id="3_u44n3"]
+[ext_resource type="Script" uid="uid://cb358kaikseg4" path="res://Scripts/SceneManager.cs" id="1_sb48q"]
+[ext_resource type="PackedScene" uid="uid://d3qtgtb3k08ed" path="res://Scenes/Wall.tscn" id="4_kldst"]
 [ext_resource type="PackedScene" uid="uid://bjna5frc80ns" path="res://Scenes/Player.tscn" id="4_t88pq"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_sb48q"]
-radius = 16.0
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_sb48q"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb48q"]
-size = Vector2(1024, 20)
+[ext_resource type="PackedScene" uid="uid://fxvwns0du8na" path="res://Scenes/Ball.tscn" id="5_7lihs"]
+[ext_resource type="PackedScene" uid="uid://biu5n5ns8lcrb" path="res://Scenes/Scoreboard.tscn" id="5_b2bpf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t88pq"]
 size = Vector2(20, 512)
@@ -23,32 +13,10 @@ size = Vector2(20, 512)
 script = ExtResource("1_sb48q")
 playerScene = ExtResource("4_t88pq")
 
-[node name="Ball" type="CharacterBody2D" parent="." unique_id=370473246]
-position = Vector2(512, 256)
-script = ExtResource("3_sb48q")
-metadata/_edit_group_ = true
+[node name="UpperWall" parent="." unique_id=1732436962 instance=ExtResource("4_kldst")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=762712678]
-shape = SubResource("CircleShape2D_sb48q")
-
-[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=69271726]
-texture = ExtResource("3_u44n3")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Ball" unique_id=2080618425]
-replication_config = SubResource("SceneReplicationConfig_sb48q")
-
-[node name="UpperWall" type="Area2D" parent="." unique_id=790170516]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperWall" unique_id=1652062096]
-position = Vector2(512, -10)
-shape = SubResource("RectangleShape2D_sb48q")
-
-[node name="LowerWall" type="Area2D" parent="." unique_id=894033669]
+[node name="Lower Wall" parent="." unique_id=1158156517 instance=ExtResource("4_kldst")]
 position = Vector2(0, 532)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerWall" unique_id=13657406]
-position = Vector2(512, -10)
-shape = SubResource("RectangleShape2D_sb48q")
 
 [node name="Player1Goal" type="Area2D" parent="." unique_id=455314012]
 position = Vector2(-10, 256)
@@ -69,3 +37,11 @@ position = Vector2(60, 256)
 
 [node name="1" type="Node2D" parent="PlayerSpawnPoints" unique_id=1628818337 groups=["PlayerSpawnPoints"]]
 position = Vector2(964, 256)
+
+[node name="Scoreboard" parent="." unique_id=19478421 instance=ExtResource("5_b2bpf")]
+
+[node name="Ball" parent="." unique_id=1685743867 instance=ExtResource("5_7lihs")]
+position = Vector2(512, 256)
+
+[connection signal="body_entered" from="Player1Goal" to="Scoreboard" method="OnPlayer1GoalBodyEntered"]
+[connection signal="body_entered" from="Player2Goal" to="." method="OnPlayer2GoalBodyEntered"]
